@@ -38,10 +38,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         // check if the app has overlay permission
-        askDrawOverOtherAppsPermissions()
+        // askDrawOverOtherAppsPermissions()
         // showWhenLockedAndTurnScreenOn()
         hideSystemUI()
-        setDefaultLauncher(this)
+        // setDefaultLauncher(this)
 
         val pm = packageManager
         val mainIntent = Intent(Intent.ACTION_MAIN, null)

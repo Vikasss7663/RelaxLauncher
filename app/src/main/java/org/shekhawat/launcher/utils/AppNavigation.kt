@@ -1,0 +1,29 @@
+package org.shekhawat.launcher.utils
+
+enum class AppNavigation {
+    HOME,
+    APP_LIST,
+    POMODORO,
+    SETTINGS,
+    WIDGETS,
+    SEARCH,
+    NOTIFICATIONS,
+    RECENT_APPS,
+    THEME,
+    WALLPAPER,
+    LOCK_SCREEN,
+    SCREEN_TIME,
+    APP_LOCK,
+    APP_INFO,
+    APP_PERMISSIONS,
+    APP_UNINSTALL,
+    APP_SHARE,
+    APP_RATE,
+    APP_FEEDBACK,
+    APP_ABOUT,
+    APP_HELP,
+    APP_PRIVACY_POLICY,
+    APP_TERMS_AND_CONDITIONS,
+    APP_OPEN_SOURCE_LICENSES,
+    APP_VERSION
+}

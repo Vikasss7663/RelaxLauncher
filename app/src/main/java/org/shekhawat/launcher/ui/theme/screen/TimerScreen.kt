@@ -35,20 +35,17 @@ import java.time.LocalDateTime
 import java.time.ZoneOffset
 
 @Composable
-fun PomodoroScreen() {
+fun TimerScreen() {
 
     val configuration = LocalConfiguration.current
     val startTime by remember { mutableStateOf(LocalDateTime.now()) }
-    var remainingSeconds by remember { mutableLongStateOf(0L) }
+    var elapsedSeconds by remember { mutableLongStateOf(0L) }
 
     LaunchedEffect(key1 = Unit) {
         while (true) {
-            remainingSeconds = withContext(Dispatchers.Default) {
-                startTime.plusMinutes(25).toEpochSecond(ZoneOffset.UTC).minus(
-                    LocalDateTime.now().toEpochSecond(
-                        ZoneOffset.UTC
-                    )
-                )
+            elapsedSeconds = withContext(Dispatchers.Default) {
+                LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+                    .minus(startTime.toEpochSecond(ZoneOffset.UTC))
             }
             delay(1000)
         }
@@ -62,17 +59,23 @@ fun PomodoroScreen() {
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                PomodoroWidget(
+                TimerWidget(
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 48.dp, top = 48.dp, bottom = 48.dp, end = 12.dp),
-                    text = "${(remainingSeconds % 3600) / 60}"
+                    text = "${elapsedSeconds / (3600)}"
                 )
-                PomodoroWidget(
+                TimerWidget(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 12.dp, top = 48.dp, bottom = 48.dp, end = 12.dp),
+                    text = "${(elapsedSeconds % 3600) / 60}"
+                )
+                TimerWidget(
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 12.dp, top = 48.dp, bottom = 48.dp, end = 48.dp),
-                    text = "${remainingSeconds % 60}"
+                    text = "${elapsedSeconds % 60}"
                 )
             }
         }
@@ -84,17 +87,23 @@ fun PomodoroScreen() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                PomodoroWidget(
+                TimerWidget(
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 48.dp, top = 48.dp, bottom = 12.dp, end = 48.dp),
-                    text = "${(remainingSeconds % 3600) / 60}"
+                    text = "${elapsedSeconds / (3600)}"
                 )
-                PomodoroWidget(
+                TimerWidget(
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(start = 48.dp, top = 12.dp, bottom = 12.dp, end = 48.dp),
+                    text = "${(elapsedSeconds % 3600) / 60}"
+                )
+                TimerWidget(
                     modifier = Modifier
                         .weight(1f)
                         .padding(start = 48.dp, top = 12.dp, bottom = 48.dp, end = 48.dp),
-                    text = "${remainingSeconds % 60}"
+                    text = "${elapsedSeconds % 60}"
                 )
             }
         }
@@ -102,7 +111,7 @@ fun PomodoroScreen() {
 }
 
 @Composable
-fun PomodoroWidget(modifier: Modifier, text: String) {
+fun TimerWidget(modifier: Modifier, text: String) {
     Box(
         modifier = modifier
             .fillMaxSize()

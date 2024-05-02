@@ -9,12 +9,14 @@ import org.shekhawat.launcher.AppInfo
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun RootScreen(appList: List<AppInfo>) {
-    val scrollState = rememberPagerState(1) { 3 }
+    val scrollState = rememberPagerState(3) { 5 }
     HorizontalPager(state = scrollState) {
         when (it) {
-            0 -> PomodoroScreen()
-            1 -> MainScreen(appList)
-            2 -> WidgetsScreen()
+            0 -> TimerScreen()
+            1 -> TimeScreen()
+            2 -> PomodoroScreen()
+            3 -> MainScreen(appList)
+            4 -> WidgetsScreen()
         }
     }
 }

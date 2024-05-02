@@ -27,6 +27,8 @@ import org.shekhawat.launcher.ui.theme.screen.AppListScreen
 import org.shekhawat.launcher.ui.theme.screen.PomodoroScreen
 import org.shekhawat.launcher.ui.theme.screen.RootScreen
 import org.shekhawat.launcher.ui.theme.screen.SettingsScreen
+import org.shekhawat.launcher.ui.theme.screen.TimeScreen
+import org.shekhawat.launcher.ui.theme.screen.TimerScreen
 import org.shekhawat.launcher.ui.theme.screen.WidgetsScreen
 import org.shekhawat.launcher.utils.AppNavigation
 
@@ -86,6 +88,12 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(AppNavigation.POMODORO.name) {
                             PomodoroScreen()
+                        }
+                        composable(AppNavigation.TIME.name) {
+                            TimeScreen()
+                        }
+                        composable(AppNavigation.TIMER.name) {
+                            TimerScreen()
                         }
                         composable(AppNavigation.WIDGETS.name) {
                             WidgetsScreen()

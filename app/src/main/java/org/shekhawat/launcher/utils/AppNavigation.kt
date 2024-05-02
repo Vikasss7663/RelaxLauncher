@@ -3,6 +3,8 @@ package org.shekhawat.launcher.utils
 enum class AppNavigation {
     HOME,
     APP_LIST,
+    TIME,
+    TIMER,
     POMODORO,
     SETTINGS,
     WIDGETS,
